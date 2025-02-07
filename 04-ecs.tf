@@ -4,7 +4,7 @@ resource "aws_ecs_cluster" "this" {
 
 resource "aws_ecs_task_definition" "task_definition" {
   family = "nginx"
-  container_definitions = templatefile("task-definitions/service.json.tpl", {
+  container_definitions = templatefile("task-definitions/service.json.tpl",{
     aws_cloudwatch_log_group = aws_cloudwatch_log_group.ecs.name
   })
   requires_compatibilities = ["EC2"]
